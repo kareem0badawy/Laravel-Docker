@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/kareem0badawy/Laravel-Docker">
-    <img src="docker/docker-laravel.png" alt="Laravel-Docker" width="1000" height="350">
+    <img src="docker/docker-nginx-laravel.png" alt="Laravel-Docker" width="1000" height="350">
 </a>
 </p>
 
