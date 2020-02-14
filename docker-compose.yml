@@ -31,6 +31,19 @@ services:
      - appnet
     volumes:
      - dbdata:/var/lib/mysql
+#Begin Node
+  node:
+    build:
+      context: ./docker/node
+      dockerfile: Dockerfile
+    image: nodejsdocker/app:latest
+    networks:
+     - appnet
+    volumes:
+     - .:/opt
+    working_dir: /opt
+    command: echo hi
+#End Node
 networks:
   appnet:
     driver: bridge

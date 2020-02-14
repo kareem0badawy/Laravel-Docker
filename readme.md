@@ -12,6 +12,7 @@
     - Nginx / PHP
     - MySQL
     - Redis
+    - NodeJs
 
 2. `Dockerfile` to build a nginx/php image
 3. Re-use existing images for MySQL/Redis
