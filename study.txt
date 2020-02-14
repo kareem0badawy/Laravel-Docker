@@ -1,0 +1,91 @@
+Docker Commands
+
+Create And Build
+Build => docker build -t laraveldocker/app:latest -f ./docker/app/Dockerfile .
+
+another build 
+docker build -t laraveldocker/app:latest  -f docker/app/Dockerfile docker/app
+
+
+
+Delete image Docker => 
+
+docker image rm laravelapp:latest
+
+
+make  Image => 
+
+docker run --rm -it laraveldocker/app:latest bash
+
+
+Run Nginx => 
+	docker run -d --rm -p 8080:80 -v $(pwd)/application:/var/www/html/public laraveldocker/app:latest nginx
+
+	docker run -d --rm -p 8080:80 -v $(pwd)/application:/var/www/html/public laraveldocker/app:latest supervisord
+
+	docker run -it --rm -p 8000:80 -v $(pwd)/application:/var/www/html/public laraveldocker/app:latest 
+
+
+docker exec -it e62df35fff61 bash
+
+docker logs 7e16dd77f47d
+
+
+Added File to  docker server
+
+docker build -t laraveldocker/app:latest -f docker/app/Dockerfile docker/app
+
+
+Create Mysql Conteniar => 
+	docker run -d --rm --name=mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=homestead -e MYSQL_USER=homestead -e MYSQL_PASSWORD=root --network=appnet mysql:5.7
+
+	docker run -d --rm --name=mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=homestead -e MYSQL_USER=homestead -e MYSQL_PASSWORD=root --network=appnet -v mydata:/var/lib/mysql mysql:5.7
+	
+	and 
+
+	docker exec -it mysql bash
+	which mysqld
+
+
+docker run -it --rm -v $(pwd):/var/www/html -w /var/www/html laraveldocker/app:latest composer create-project --prefer-dist laravel/laravel application "5.8.*"
+
+
+
+docker run --name=app --network=appnet -d --rm -p 8080:80 -v $(pwd)/application:/var/www/html laraveldocker/app:latest
+
+docker exec -it -w /var/www/html app pwd
+
+docker exec -it -w /var/www/html app php artisan make:auth
+
+docker exec -it -w /var/www/html app php artisan migrate
+
+
+
+create volumes
+
+docker volume create mydata
+
+docker run -d --rm --name=mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=homestead -e MYSQL_USER=homestead -e MYSQL_PASSWORD=root --network=appnet -v mydata:/var/lib/mysql mysql:5.7
+
+docker exec -it mysql mysql -u root -p -e "use homestead; show tables;"
+
+
+-----
+docker-compose exec app \
+
+> bash -c "cd /var/www/html && composer require predis/predis"
+ 
+ alter
+docker-compose exec app bash -c "cd /var/www/html && php artisan list"
+
+
+export APP_PORT=8080
+export DB_PORT=33060
+
+# Our `docker-compose.yml` file will use the above variables
+docker-compose up -d
+
+APP_PORT=8080 DB_PORT=33060 docker-compose up -d
+
+
+docker-compose up -d
