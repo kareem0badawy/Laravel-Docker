@@ -9,10 +9,10 @@
 # Goals
 
 1. Run a dev enviroment in Docker
-    - Nginx / PHP <img src="public/icon/php.png" alt="PHP">
+    - Nginx / PHP 
     - MySQL 
     - Redis
-    - NodeJs <img src="public/icon/node-js.jpg" width="36" height="36" alt="node-js">
+    - NodeJs 
     - build up our helper script to accomplish using bash
 
 2. `Dockerfile` to build a nginx/php image
