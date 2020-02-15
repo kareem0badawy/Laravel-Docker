@@ -78,6 +78,9 @@ docker-compose exec app \
  alter
 docker-compose exec app bash -c "cd /var/www/html && php artisan list"
 
+docker-compose exec app bash -c "cd /var/www/html && php artisan key:generate"
+
+
 
 export APP_PORT=8080
 export DB_PORT=33060
@@ -89,3 +92,11 @@ APP_PORT=8080 DB_PORT=33060 docker-compose up -d
 
 
 docker-compose up -d
+
+
+docker rm $(docker ps -a -q) -f
+
+docker volume prune
+
+docker-compose up --build
+
